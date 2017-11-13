@@ -9,7 +9,11 @@ sap.ui.define([
 	onPressCheck: function(){
 		//alert("onPressCheck");
 		var thispage = this;
-		var url = "https://addonexchangeratei343470trial.hanatrial.ondemand.com/addon-exchange-rate/exchangeRates?lastestExchangeRates=USD,GBP,ILS,CAD";
+		
+	
+		
+		var url = "https://i343470trial-trial-dev-ratefullstackfromneo.cfapps.eu10.hana.ondemand.com/exchangeRates?lastestExchangeRates=USD,GBP,ILS,CAD";
+		//var url = "https://addonexchangeratei343470trial.hanatrial.ondemand.com/addon-exchange-rate/exchangeRates?lastestExchangeRates=USD,GBP,ILS,CAD";
 				 $.ajax({
 					 type: 'GET'
 				    , url: url
@@ -57,30 +61,53 @@ sap.ui.define([
 					}
 				});
 	},
+
 	GetSL:function(){
-			//var campanyDB = "DEMOCN";
-		//	var userName = "manager";
-			//var password = "1234";
-			
-			//var campanyDB = "DEMOCN";
-			//var userName = "manager";
-			//var password = "1234";
-			//var url = "https://slcdemo.cfapps.sap.hana.ondemand.com/api_poc/api/b1s/v1/BusinessPartners('C01')";
+		var thispage = this;
+		
+	
+		
 			var url = "https://slcdemo.cfapps.sap.hana.ondemand.com/api_poc/api/b1s/v1/SBOBobService_GetCurrencyRate";
-			//var Currency= "EUR";
+			var slurl = "https://slcdemo.cfapps.sap.hana.ondemand.com/api_poc/api/b1s/v1/Login";
+			//var Currencys= "EUR";
     	//"Date": "20171107"
-			
-		
-				ServiceLayer.callSLbyPost(url).then(function(slResult) {
-					console.log(url);
-					if (slResult !== false) {
-						//var model = new JSONModel(slResult);
-						alert (slResult);
-					}
-				});
-			
-		
-		}
+			var Currencys = new Array();
+			Currencys[0] = "USD";
+			Currencys[1] = "GBP";
+			Currencys[2] = "CAD";
+			Currencys[3] = "JPY";
+			var date = "20171107";
+			var j=1;
+			var x;
+		//	var para;
+			var text;
+			for(x in Currencys)
+			{	//alert(Currencys[x]);
+				var para1 = {"Currency": Currencys[x],"Date": date};
+				text = thispage.byId(j.toString());
+				text.setText(Currencys[x]);
+				j++;
+				text = thispage.byId(j.toString());
+				text.setText(Currencys[x]);
+				j++;
+				//text = thispage.byId(j.toString());
+				//text.setText(getRate(url,para));
+				//j++;
+				//var slResult = ServiceLayer.callSLbyPost(url,para);
+				//alert(slResult.value);
+				ServiceLayer.callSLbyPost(slurl,para1).then((function(jIndex) {
+						return function(slResult) {
+							if (slResult !== false) {
+								//alert( slResult.value);
+								text = thispage.byId(jIndex.toString());
+								text.setText(slResult.value);
+							}
+						};
+					})(j));
+					j++;
+			}
+	}
+
 	
 	
 	});

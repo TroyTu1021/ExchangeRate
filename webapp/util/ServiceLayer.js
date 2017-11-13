@@ -109,9 +109,9 @@ sap.ui.define([
 				});
 			},
 			
-			callSLbyPost: function(slCallUrl) {
+			callSLbyPost: function(slCallUrl,para) {
 			//	CommonUtil.busy(true);
-				var para = {"Currency": "EUR","Date": "20171107"};
+				//var para = {"Currency": "EUR","Date": "20171107"};
 				
 				return new Promise(function(resolve, reject) {
 				//	if (typeof gSLCallResult === 'undefined') {
