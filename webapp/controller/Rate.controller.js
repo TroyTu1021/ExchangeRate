@@ -95,7 +95,7 @@ sap.ui.define([
 				//j++;
 				//var slResult = ServiceLayer.callSLbyPost(url,para);
 				//alert(slResult.value);
-				ServiceLayer.callSLbyPost(slurl,para1).then((function(jIndex) {
+				ServiceLayer.callSLbyPost(url,para1).then((function(jIndex) {
 						return function(slResult) {
 							if (slResult !== false) {
 								//alert( slResult.value);
