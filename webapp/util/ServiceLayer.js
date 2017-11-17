@@ -19,6 +19,8 @@ sap.ui.define([
 
 		return {
 			getLoginUrl: function() {
+				//return "https://10.58.8.54:50000/b1s/v1/Login";
+				//return "https://10.58.114.80:50000/b1s/v1/Login";
 				return CommonUtil.getServerUrl() + LOGIN_URL_SUFFIX;
 			},
 
@@ -115,7 +117,7 @@ sap.ui.define([
 				
 				return new Promise(function(resolve, reject) {
 				//	if (typeof gSLCallResult === 'undefined') {
-						AjaxHelper.post(slCallUrl, para).then(function(data) {
+						AjaxHelper.postsimple(slCallUrl, para).then(function(data) {
 								var dataModel = {
 									value: data
 								};

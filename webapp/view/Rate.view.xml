@@ -61,8 +61,9 @@
 					
 					
 					</Table>
-					<Button text="Get Latest exchange rate" press="onPressCheck"></Button>
-					<Button text="Get System exchange rate" press="GetSL"></Button>
+					<Button text="Get Latest ExchangeRate" press="onPressCheck"></Button>
+					<Button text="Get System ExchangeRate From SCP app" press="GetSL"></Button>
+					<Button text="Get System ExchangeRate From SL directly" press="GetSLDirect"></Button>
 				</content>
 			</Page>
 		</pages>
